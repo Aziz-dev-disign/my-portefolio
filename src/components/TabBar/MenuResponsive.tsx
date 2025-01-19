@@ -2,7 +2,7 @@ import {useContext} from 'react';
 import {useMediaQuery} from 'react-responsive';
 
 import './styles.css';
-import { mediaBreakpoints } from '../../responsive';
+import { mediaBreakpoints } from '../../common/responsive';
 import { AppContext, AppContextInterface } from '../../providers/application';
 
 export const MenuResponsive = () => {
