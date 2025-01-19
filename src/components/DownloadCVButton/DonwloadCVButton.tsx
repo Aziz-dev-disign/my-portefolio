@@ -1,5 +1,5 @@
 import {useMediaQuery} from 'react-responsive';
-import { mediaBreakpoints } from '../../responsive';
+import { mediaBreakpoints } from '../../common/responsive';
 import { useDownloadPdf } from '../../hooks/useDownloadPdf';
 
 export const DonwloadCVButton = ({isSmall}: {isSmall?: boolean}) => {
