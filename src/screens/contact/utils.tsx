@@ -1,6 +1,7 @@
 import { BiLogoGmail } from "react-icons/bi";
 import {
   FaGithub,
+  FaGitlab,
   // FaInstagramSquare,
   FaLinkedin,
   FaWhatsapp,
@@ -42,6 +43,18 @@ export const socialNetworks = (size: number = 54, isFooter = false) => [
     />
   </button>,
   <button
+    title="gitlab"
+    key="gitlab"
+    onClick={handleOpenSocialNetwork("https://gitlab.com/keurdo")}
+  >
+    <FaGitlab
+      size={size}
+      className={`m-auto text-[${size}px] ${
+        isFooter ? "text-tabBarActiveTextColor" : "text-themePrimaryColor"
+      } hover:cursor-pointer`}
+    />
+  </button>,
+  <button
     title="whatsApp"
     key="whatsApp"
     onClick={handleOpenSocialNetwork("https://wa.me/22670180874")}
@@ -53,20 +66,6 @@ export const socialNetworks = (size: number = 54, isFooter = false) => [
       } hover:cursor-pointer`}
     />
   </button>,
-  // <button
-  //   title="instagram"
-  //   key="instagram"
-  //   onClick={handleOpenSocialNetwork(
-  //     "https://www.instagram.com/masoudouattara"
-  //   )}
-  // >
-  //   <FaInstagramSquare
-  //     size={size}
-  //     className={`m-auto text-[${size}px] ${
-  //       isFooter ? "text-tabBarActiveTextColor" : "text-themePrimaryColor"
-  //     } hover:cursor-pointer`}
-  //   />
-  // </button>,
   <button title="gmail" key="gmail" onClick={handleOpenGmail}>
     <BiLogoGmail
       size={size}

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
 import { AppContext, AppContextInterface } from "../../providers/application";
 import { DonwloadCVButton } from "../../components/DownloadCVButton";
+import me from "../../assets/images/me.jpg";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export const Home = () => {
           </p>
 
           <h1 className="pt-2 text-3xl font-bold text-primaryColor opacity-70 sm:text-5xl">
-            Lamini Abdoul Mas'oud OUATTARA{" "}
+            Abdoul Aziz BANDE{" "}
             <span className="text-3xl font-extrabold text-themePrimaryColor sm:text-5xl">
               {"/>"}
             </span>{" "}
@@ -31,6 +32,8 @@ export const Home = () => {
           <TypeAnimation
             sequence={[
               "Full-Stack Developer",
+              1000,
+              "Typescript Developer",
               1000,
               "Flutter Developer",
               1000,
@@ -66,7 +69,7 @@ export const Home = () => {
         <img
           className="h-auto w-auto max-w-xs aspect-[4/3] rounded-lg object-cover shadow-lg md:h-[400px] md:w-[286px] xl:h-[500px] xl:w-[358px]"
           loading="lazy"
-          src="../../assets/images/me.jpg"
+          src={me}
           alt="img"
         />
       </div>
