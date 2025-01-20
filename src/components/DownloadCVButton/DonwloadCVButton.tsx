@@ -1,6 +1,6 @@
 import {useMediaQuery} from 'react-responsive';
 import { mediaBreakpoints } from '../../common/responsive';
-import { useDownloadPdf } from '../../hooks/useDownloadPdf';
+import { useDownloadPdf } from '../../hooks';
 
 export const DonwloadCVButton = ({isSmall}: {isSmall?: boolean}) => {
   const [, handleDownload] = useDownloadPdf(import.meta.env.VITE_CV_PATH, 'MasoudOuattaraResume.pdf');
