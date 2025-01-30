@@ -1,9 +1,12 @@
-import {useState} from 'react';
-import {FaGithub} from 'react-icons/fa';
-import {MdClose, MdOutlineOpenInNew} from 'react-icons/md';
-import {useMediaQuery} from 'react-responsive';
-import {Project} from './utils';
-import { mediaBreakpoints } from '../../common';
+import { useState } from "react";
+import { FaGithub } from "react-icons/fa";
+import { MdClose, MdOutlineOpenInNew } from "react-icons/md";
+import { useMediaQuery } from "react-responsive";
+import { Project } from "./utils";
+import { mediaBreakpoints } from "../../common";
+import ImgSlider from "../../components/Slider";
+import { VscPreview } from "react-icons/vsc";
+import { AnimatePresence, motion } from "motion/react";
 
 interface ProjectCardProps {
   project: Project;
@@ -12,8 +15,16 @@ interface ProjectCardProps {
   toggleShowMore(): void;
 }
 
-const ProjectCard = ({project, isDialog = false, isOpenDialog, toggleShowMore}: ProjectCardProps) => {
-  const displayedText = isOpenDialog ? project.description : `${project.description.slice(0, 180)}...`;
+const ProjectCard = ({
+  project,
+  isDialog = false,
+  isOpenDialog,
+  toggleShowMore,
+}: ProjectCardProps) => {
+  const displayedText = isOpenDialog
+    ? project.description
+    : `${project.description.slice(0, 180)}...`;
+  const [showPreview, setShowPreview] = useState(false);
 
   return (
     <div className="relative flex flex-col items-center justify-center w-full px-4 py-4 rounded-lg sm:p-8 sm:py-6">
@@ -25,7 +36,9 @@ const ProjectCard = ({project, isDialog = false, isOpenDialog, toggleShowMore}: 
           <img src={project.img} alt={project.name} className="w-full h-full" />
         </div>
         <div className="pl-4 text-primaryColor">
-          <span className="text-base font-semibold h-7 xl:text-2xl xl:font-bold">{project.name}</span>
+          <span className="text-base font-semibold h-7 xl:text-2xl xl:font-bold">
+            {project.name}
+          </span>
           <div className="pt-1 text-sm font-light sm:pt-2 xl:text-base">
             <span>Stacks principales:</span>
             <div className="flex flex-row">
@@ -35,9 +48,7 @@ const ProjectCard = ({project, isDialog = false, isOpenDialog, toggleShowMore}: 
                   className="relative flex items-center justify-center p-0 mx-0 my-2 rounded-sm group h-9 w-9 first:ml-0 hover:cursor-pointer hover:bg-white sm:mx-1 sm:p-1"
                 >
                   {item}
-                  <span
-                    className="absolute px-2 m-5 mx-auto mt-10 text-sm font-semibold text-center text-black transition-opacity -translate-x-1/2 translate-y-full bg-white rounded-md opacity-0 py-1/2 left-1/2 group-hover:opacity-100"
-                  >
+                  <span className="absolute px-2 m-5 mx-auto mt-10 text-sm font-semibold text-center text-black transition-opacity -translate-x-1/2 translate-y-full bg-white rounded-md opacity-0 py-1/2 left-1/2 group-hover:opacity-100">
                     {item.key}
                   </span>
                 </div>
@@ -61,20 +72,38 @@ const ProjectCard = ({project, isDialog = false, isOpenDialog, toggleShowMore}: 
             </a>
           </div>
         )}
+        <div className="flex">
+          {project?.url && (
+            <div className="flex items-center w-full pt-2">
+              <MdOutlineOpenInNew className="mr-2 text-[30px] text-themePrimaryColor" />
+              <a
+                className="px-1 text-base text-themePrimaryColor hover:underline"
+                href={project?.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                View Demo
+              </a>
+            </div>
+          )}
 
-        {project?.url && (
-          <div className="flex items-center w-full pt-2">
-            <MdOutlineOpenInNew className="mr-2 text-[30px] text-themePrimaryColor" />
-            <a
-              className="px-1 text-base text-themePrimaryColor hover:underline"
-              href={project?.url}
-              target="_blank"
-              rel="noreferrer"
+          {project?.previewBtn && isDialog && (
+            <motion.div
+              initial={false}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center w-full pt-2"
             >
-              View Demo
-            </a>
-          </div>
-        )}
+              <VscPreview className="mr-2 text-[30px] text-themePrimaryColor" />
+              <div
+                className="px-1 text-base cursor-pointer text-themePrimaryColor hover:underline"
+                onClick={() => setShowPreview(!showPreview)}
+              >
+                {showPreview ? "Hide preview images" : "Show preview images"}
+              </div>
+            </motion.div>
+          )}
+        </div>
 
         <p className="w-full pb-2 mt-4 text-base break-words text-primaryColor">
           {isDialog ? project.description : displayedText}
@@ -82,19 +111,32 @@ const ProjectCard = ({project, isDialog = false, isOpenDialog, toggleShowMore}: 
 
         {project.description.length > 3 && !isDialog && (
           <button
-            title={isOpenDialog ? 'Read less' : 'Read more'}
+            title={isOpenDialog ? "Read less" : "Read more"}
             className="absolute font-semibold text-themePrimaryColor hover:cursor-pointer"
             onClick={toggleShowMore}
           >
-            {isOpenDialog ? 'Read less' : 'Read more'}
+            {isOpenDialog ? "Read less" : "Read more"}
           </button>
+        )}
+        {isDialog && showPreview && (
+          <AnimatePresence mode="wait">
+            <motion.div
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -10, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="w-full"
+            >
+              <ImgSlider />
+            </motion.div>
+          </AnimatePresence>
         )}
       </div>
     </div>
   );
 };
 
-const ProjectCardWrapper = ({project}: {project: Project}) => {
+const ProjectCardWrapper = ({ project }: { project: Project }) => {
   const [showMore, setShowMore] = useState(false);
 
   const toggleShowMore = () => {
@@ -107,7 +149,11 @@ const ProjectCardWrapper = ({project}: {project: Project}) => {
 
   return (
     <div>
-      <ProjectCard project={project} isOpenDialog={showMore} toggleShowMore={toggleShowMore} />
+      <ProjectCard
+        project={project}
+        isOpenDialog={showMore}
+        toggleShowMore={toggleShowMore}
+      />
 
       {showMore
         ? !mobile && (
@@ -118,7 +164,12 @@ const ProjectCardWrapper = ({project}: {project: Project}) => {
                 <div className="relative w-auto max-w-3xl mx-auto my-6">
                   <div className="relative flex flex-col w-full border-0 rounded-lg shadow-lg outline-none bg-bgColor focus:outline-none">
                     <div className="relative">
-                      <ProjectCard isDialog project={project} isOpenDialog={showMore} toggleShowMore={toggleShowMore} />
+                      <ProjectCard
+                        isDialog
+                        project={project}
+                        isOpenDialog={showMore}
+                        toggleShowMore={toggleShowMore}
+                      />
                       <button
                         title="See more"
                         className="absolute text-white right-2 top-2"

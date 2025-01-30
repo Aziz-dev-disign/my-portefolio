@@ -1,9 +1,11 @@
-import {useMediaQuery} from 'react-responsive';
-import { mediaBreakpoints } from '../../common/responsive';
-import { useDownloadPdf } from '../../hooks';
+import { useMediaQuery } from "react-responsive";
+import { mediaBreakpoints } from "../../common/responsive";
+// import { useDownloadPdf } from "../../hooks";
 
-export const DonwloadCVButton = ({isSmall}: {isSmall?: boolean}) => {
-  const [, handleDownload] = useDownloadPdf(import.meta.env.VITE_CV_PATH, 'MasoudOuattaraResume.pdf');
+export const DownloadCVButton = ({ isSmall }: { isSmall?: boolean }) => {
+  const CV_PATH =
+    "https://drive.google.com/uc?export=download&id=11wpWdaPAk1JG7hr7vbY1nUJitloDDUAi";
+  // const [, handleDownload] = useDownloadPdf(CV_PATH, "AbdoulAzizBande-dev.pdf");
 
   const mobile = useMediaQuery({
     query: `(max-width: ${mediaBreakpoints.sm}px)`,
@@ -12,18 +14,20 @@ export const DonwloadCVButton = ({isSmall}: {isSmall?: boolean}) => {
   return mobile ? (
     <a
       title="download cv"
-      className={`${!isSmall ? 'mb-8 mr-10 w-full rounded px-12 py-4 text-center sm:mb-0 sm:w-fit' : ''}  btn`}
-      href={import.meta.env.VITE_CV_PATH}
+      className={`${!isSmall ? "mb-8 mr-10 w-full rounded px-12 py-4 text-center sm:mb-0 sm:w-fit" : ""} btn`}
+      href={CV_PATH}
+      download
     >
       Télécharger mon CV
     </a>
   ) : (
-    <button
+    <a
       title="download cv"
-      onClick={handleDownload}
-      className={`${!isSmall ? 'mb-8 mr-10 w-full rounded px-12 py-4 sm:mb-0 sm:w-fit' : ''}  btn`}
+      href={CV_PATH}
+      download="AbdoulAzizBande-dev.pdf"
+      className={`${!isSmall ? "mb-8 mr-10 w-full rounded px-12 py-4 text-center sm:mb-0 sm:w-fit" : ""} btn`}
     >
       Télécharger mon CV
-    </button>
+    </a>
   );
 };

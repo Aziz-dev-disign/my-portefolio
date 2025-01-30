@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        accent: 'var(--accent-color)',
         bgColor: `var(--bgColor)`,
         primaryColor: `var(--primaryColor)`,
 
@@ -63,5 +64,6 @@ export default {
         h3: {fontSize: '35px'},
       });
     }),
+    require('daisyui'),
   ],
 };

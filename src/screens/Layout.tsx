@@ -8,7 +8,8 @@ import { Footer } from "../components/Footer";
 import { mediaBreakpoints } from "../common";
 
 const LeftBar = lazy(() => import("../components/LeftBar/LeftBar"));
-const SocialNetworks = lazy(() => import("./SocialNetworks"));
+// const SocialNetworks = lazy(() => import("./SocialNetworks"));
+const Sidebar = lazy(() => import("../components/Sidebar/Sidebar"));
 
 export const Layout = () => {
   const mobileAndTablet = useMediaQuery({
@@ -21,7 +22,8 @@ export const Layout = () => {
         <Header mobileAndTablet={mobileAndTablet} />
 
         <section className="flex flex-col-reverse w-full overflow-hidden h-content xl:flex-row">
-          {!mobileAndTablet && <SocialNetworks />}
+        <Sidebar />
+          {/* {!mobileAndTablet && <SocialNetworks />} */}
           <LeftBar />
           <section className="w-full h-full pb-2 overflow-hidden main-window bg-bgColor">
             <TabBar mobileAndTablet={mobileAndTablet} />

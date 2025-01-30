@@ -1,20 +1,54 @@
-import {useContext, useState} from 'react';
-import {Link, useLocation} from 'react-router-dom';
+import { useContext, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-import {FaFolder, FaFolderOpen} from 'react-icons/fa';
-import {IoIosArrowDown, IoIosArrowForward} from 'react-icons/io';
+import { FaFolder, FaFolderOpen } from "react-icons/fa";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+// import { VscCloseAll } from "react-icons/vsc";
 
-
-import {twMerge} from 'tailwind-merge';
-import { AppContext, AppContextInterface } from '../../providers/application';
-import { routesLinkItems } from '../../providers/routes';
+import { twMerge } from "tailwind-merge";
+import { AppContext, AppContextInterface } from "../../providers/application";
+import { routesLinkItems } from "../../providers/routes";
 
 export const LeftBar = () => {
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   const [open, setOpen] = useState<boolean>(true);
 
-  const {isResponsiveTabBar, setResponsiveTabBar} = useContext(AppContext) as AppContextInterface;
-  const {pdfPreviewerOpen} = useContext(AppContext) as AppContextInterface;
+  const {
+    isResponsiveTabBar,
+    setResponsiveTabBar,
+    aboutOpen,
+    setAboutOpen,
+    contactOpen,
+    setContactOpen,
+    projectsOpen,
+    setProjectsOpen,
+    technologiesOpen,
+    setTechnologiesOpen,
+  } = useContext(AppContext) as AppContextInterface;
+  const { pdfPreviewerOpen } = useContext(AppContext) as AppContextInterface;
+
+  const handleClickLeftBarMenuPath = (path: string) => {
+    switch (path) {
+      case "/about":
+        setAboutOpen(true);
+        break;
+
+      case "/contact":
+        setContactOpen(true);
+        break;
+
+      case "/projects":
+        setProjectsOpen(true);
+        break;
+
+      case "/technologies":
+        setTechnologiesOpen(true);
+        break;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <aside
@@ -25,32 +59,44 @@ export const LeftBar = () => {
         xl:right-auto xl:top-12 xl:w-72
         xl:border-r xl:border-t-0
         xl:border-l-leftSideBorder xl:border-r-leftSideBorder xl:transition-none`,
-        ` ${isResponsiveTabBar ? 'w-80' : 'w-0'}`
+        ` ${isResponsiveTabBar ? "w-80" : "w-0"}`
       )}
     >
       <div className="w-full px-4 py-2">
-        <div className="block font-code font-light text-textEditorColor">EXPLORER</div>
+        <div className="block font-light font-code text-textEditorColor">
+          EXPLORER
+        </div>
       </div>
       <button
         title="open-folder-structure"
         type="button"
-        className="flex w-full items-center gap-2 px-5 py-1 text-base text-textEditorColor hover:bg-textEditorHoverBg hover:text-textEditorHoverColor"
+        className="flex items-center w-full gap-2 px-5 py-1 text-base text-textEditorColor hover:bg-textEditorHoverBg hover:text-textEditorHoverColor"
         onClick={() => setOpen(!open)}
       >
         {open ? <IoIosArrowDown /> : <IoIosArrowForward />}
         {open ? <FaFolderOpen color="#90a4ad" /> : <FaFolder color="#90a4ad" />}
 
         <p>Portfolio</p>
+        {/* <VscCloseAll color="#90a4ad" className="items-end"/> */}
       </button>
       {open && (
         <>
-          {routesLinkItems(pdfPreviewerOpen).map((item, key) => (
+          {routesLinkItems(
+            pdfPreviewerOpen,
+            aboutOpen,
+            contactOpen,
+            projectsOpen,
+            technologiesOpen
+          ).map((item, key) => (
             <Link
               key={key}
-              to={item?.path || '/'}
-              onClick={() => setResponsiveTabBar(!isResponsiveTabBar)}
+              to={item?.path || "/"}
+              onClick={() => {
+                setResponsiveTabBar(!isResponsiveTabBar);
+                handleClickLeftBarMenuPath(item?.path);
+              }}
               className={`${
-                pathname === item?.path && 'active'
+                pathname === item?.path && "active"
               } relative flex items-center gap-2 px-14 py-1 text-base text-textEditorColor hover:bg-textEditorHoverBg hover:text-textEditorHoverColor [&.active]:bg-themePrimaryColor [&.active]:text-tabBarActiveTextColor`}
             >
               {item.logo}

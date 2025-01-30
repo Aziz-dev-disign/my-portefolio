@@ -25,9 +25,10 @@ export interface Project {
   stack: JSX.Element[];
   url?: string;
   git?: string;
+  previewBtn?: boolean
 }
 
-export const comerciaProjects: Project[] = [
+export const professionnalProjects: Project[] = [
   {
     name: "Sank Money",
     description: `Sank Money est une application de mobile money qui facilite les transactions financières à travers les téléphones mobiles. 
@@ -36,6 +37,7 @@ export const comerciaProjects: Project[] = [
     En plus de cela, Sank Money permet de payer des factures, offrant ainsi une solution pratique pour gérer ses finances quotidiennes.`,
     img: sankLogo,
     url: "https://sankmoney.com/",
+    previewBtn: true,
     stack: [
       <SiTypescript key="ts" color="#2F75C0" className="text-[28px]" />,
       <SiFlutter key="react" color="#5ED4F4" className="text-[28px]" />,
