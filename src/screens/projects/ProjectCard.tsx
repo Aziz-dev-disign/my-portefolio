@@ -87,7 +87,7 @@ const ProjectCard = ({
             </div>
           )}
 
-          {project?.previewBtn && isDialog && (
+          {/* {project?.previewBtn && isDialog && (
             <motion.div
               initial={false}
               whileHover={{ scale: 1.05 }}
@@ -102,7 +102,7 @@ const ProjectCard = ({
                 {showPreview ? "Hide preview images" : "Show preview images"}
               </div>
             </motion.div>
-          )}
+          )} */}
         </div>
 
         <p className="w-full pb-2 mt-4 text-base break-words text-primaryColor">
