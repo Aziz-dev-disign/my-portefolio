@@ -88,12 +88,14 @@
   --bgColor: rgb(249, 249, 251);
   --leftSideBorder: #219fd5;
   --textEditorColor: #6C8CAD;
+  --accent-color: #f22626;
 
 }
 
 
 .theme-light {
   --primaryColor: #201e1e;
+  --accent-color: #f22626;
   --bgColor: #f0f0f0;
   --leftSideBorder: #d4d3d5;
 
@@ -118,6 +120,7 @@
 
 .theme-dark {
   --primaryColor: #FFFFFF;
+  --accent-color: #f22626;
   --bgColor: #333138;
   --leftSideBorder: #474649;
 
@@ -142,6 +145,7 @@
 
 .theme-blue {
   --primaryColor: #FFFFFF;
+  --accent-color: #f22626;
   --bgColor: #0C2235;
   --leftSideBorder: #143d4f;
 
