@@ -1,10 +1,12 @@
 import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { MdClose } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AppContext, AppContextInterface } from "../../providers/application";
 import { RoutesLinkItems, routesLinkItems } from "../../providers/routes";
 
 export const TabBar = ({ mobileAndTablet }: { mobileAndTablet: boolean }) => {
+  const { t } = useTranslation();
   const { pathname, state } = useLocation();
   const navigate = useNavigate();
 
@@ -76,7 +78,8 @@ export const TabBar = ({ mobileAndTablet }: { mobileAndTablet: boolean }) => {
           aboutOpen,
           contactOpen,
           projectsOpen,
-          technologiesOpen
+          technologiesOpen,
+          t
         )
           .filter((item) => item.isDisplayed)
           .map((item, key) => {

@@ -1,33 +1,41 @@
 import { useMediaQuery } from "react-responsive";
+import { useTranslation } from "react-i18next";
 import { mediaBreakpoints } from "../../common/responsive";
-// import { useDownloadPdf } from "../../hooks";
+
+const CV_FR = import.meta.env.VITE_CV_PATH_FR || "/cv.pdf";
+const CV_EN = import.meta.env.VITE_CV_PATH_EN || "/cv-en.pdf";
 
 export const DownloadCVButton = ({ isSmall }: { isSmall?: boolean }) => {
-  const CV_PATH =
-    "https://drive.google.com/uc?export=download&id=11wpWdaPAk1JG7hr7vbY1nUJitloDDUAi";
-  // const [, handleDownload] = useDownloadPdf(CV_PATH, "AbdoulAzizBande-dev.pdf");
+  const { t, i18n } = useTranslation();
+  const lang = (i18n.resolvedLanguage || i18n.language || "fr").split("-")[0];
+  const cvPath = lang === "en" ? CV_EN : CV_FR;
+  const fileName =
+    lang === "en"
+      ? "AbdoulAzizBANDE-EN.pdf"
+      : "AbdoulAzizBANDE-FR.pdf";
 
   const mobile = useMediaQuery({
     query: `(max-width: ${mediaBreakpoints.sm}px)`,
   });
 
+  const className = `${
+    !isSmall
+      ? "mb-8 mr-10 w-full rounded px-12 py-4 text-center sm:mb-0 sm:w-fit"
+      : ""
+  } btn`;
+
   return mobile ? (
-    <a
-      title="download cv"
-      className={`${!isSmall ? "mb-8 mr-10 w-full rounded px-12 py-4 text-center sm:mb-0 sm:w-fit" : ""} btn`}
-      href={CV_PATH}
-      download
-    >
-      Télécharger mon CV
+    <a title={t("common.downloadCV")} className={className} href={cvPath} download={fileName}>
+      {t("common.downloadCV")}
     </a>
   ) : (
     <a
-      title="download cv"
-      href={CV_PATH}
-      download="AbdoulAzizBande-dev.pdf"
-      className={`${!isSmall ? "mb-8 mr-10 w-full rounded px-12 py-4 text-center sm:mb-0 sm:w-fit" : ""} btn`}
+      title={t("common.downloadCV")}
+      href={cvPath}
+      download={fileName}
+      className={className}
     >
-      Télécharger mon CV
+      {t("common.downloadCV")}
     </a>
   );
 };

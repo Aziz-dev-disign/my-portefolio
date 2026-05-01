@@ -1,5 +1,3 @@
-import React from "react";
-
 const ImgSlider = () => {
   return (
     <div className="w-full carousel">

@@ -1,4 +1,5 @@
 import { ReactElement, lazy } from "react";
+import { TFunction } from "i18next";
 import { FaFilePdf, FaHtml5, FaReact } from "react-icons/fa";
 import { SiJavascript, SiTypescript } from "react-icons/si";
 import { VscJson } from "react-icons/vsc";
@@ -30,13 +31,14 @@ export const routesLinkItems = (
   aboutOpen: boolean,
   contactOpen: boolean,
   projectsOpen: boolean,
-  technologiesOpen: boolean
+  technologiesOpen: boolean,
+  t: TFunction
 ): RoutesLinkItems[] => {
   const cvMenuItem = pdfPreviewerOpen
     ? [
         {
           logo: <FaFilePdf color="#C60604" />,
-          title: "cv.pdf",
+          title: t("files.cv"),
           path: "/cv",
           closable: true,
           isDisplayed: pdfPreviewerOpen,
@@ -44,59 +46,42 @@ export const routesLinkItems = (
       ]
     : [];
 
-  // const gitlabMenu = gitlabOpenMenu
-  //   ? [
-  //       {
-  //         logo: <SiGitlab color="#C60604" />,
-  //         title: 'gitlab.com',
-  //         path: '/gitlab',
-  //         closable: true,
-  //       },
-  //     ]
-  //   : [];
-
   return [
     {
       logo: <FaReact color="#5ED4F4" />,
-      title: "accueil.jsx",
+      title: t("files.home"),
       path: "/",
       closable: false,
       isDisplayed: true,
     },
     {
       logo: <FaHtml5 color="#DE4B25" />,
-      title: "apropos.html",
+      title: t("files.about"),
       path: "/about",
       closable: true,
       isDisplayed: aboutOpen,
     },
     {
       logo: <SiTypescript color="#2F75C0" />,
-      title: "stack.ts",
+      title: t("files.stack"),
       path: "/technologies",
       closable: true,
       isDisplayed: technologiesOpen,
     },
     {
       logo: <VscJson color="#f1980d" />,
-      title: "projets.json",
+      title: t("files.projects"),
       path: "/projects",
       closable: true,
       isDisplayed: projectsOpen,
     },
     {
       logo: <SiJavascript color="#E9D54B" />,
-      title: "contact.js",
+      title: t("files.contact"),
       path: "/contact",
       closable: true,
       isDisplayed: contactOpen,
     },
-    // {
-    //   logo: <SiGitlab color="#C60604" />,
-    //   title: "gitlab.com",
-    //   path: "/gitlab",
-    //   closable: true,
-    // },
     ...cvMenuItem,
   ];
 };

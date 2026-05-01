@@ -21,6 +21,12 @@ export interface AppContextInterface {
 
   gitlabOpen: boolean;
   setGitlabOpen(gitlabOpen: boolean): void;
+
+  themeDialogOpen: boolean;
+  setThemeDialogOpen(themeDialogOpen: boolean): void;
+
+  terminalOpen: boolean;
+  setTerminalOpen(terminalOpen: boolean): void;
 }
 
 export const AppContext = createContext<AppContextInterface | null>(null);

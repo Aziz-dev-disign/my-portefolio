@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="'Source Code Pro', ui-monospace, Menlo, monospace">
+  <!-- background -->
+  <rect width="1200" height="630" fill="#0C2235"/>
+
+  <!-- editor chrome / header -->
+  <rect x="0" y="0" width="1200" height="56" fill="#020E1B"/>
+  <line x1="0" y1="56" x2="1200" y2="56" stroke="#625c5c" stroke-width="1"/>
+
+  <!-- traffic lights -->
+  <circle cx="32" cy="28" r="8" fill="#EF4444"/>
+  <circle cx="58" cy="28" r="8" fill="#EAB308"/>
+  <circle cx="84" cy="28" r="8" fill="#22C55E"/>
+
+  <!-- menubar -->
+  <g fill="#c4dbf2" font-size="14" opacity="0.85">
+    <text x="120" y="33">File</text>
+    <text x="160" y="33">Edit</text>
+    <text x="200" y="33">View</text>
+    <text x="244" y="33">Go</text>
+    <text x="278" y="33">Run</text>
+    <text x="316" y="33">Terminal</text>
+    <text x="384" y="33">Help</text>
+  </g>
+
+  <!-- search "portfolio" pill -->
+  <rect x="500" y="14" width="200" height="28" rx="6" fill="none" stroke="#b9bec2" stroke-opacity="0.4"/>
+  <text x="600" y="33" fill="#c4dbf2" font-size="13" text-anchor="middle" opacity="0.8">portfolio</text>
+
+  <!-- left activity bar -->
+  <rect x="0" y="56" width="64" height="574" fill="#0C2235"/>
+  <line x1="64" y1="56" x2="64" y2="630" stroke="#143d4f" stroke-width="1"/>
+  <g fill="#90A4AD">
+    <!-- folder open glyph -->
+    <path d="M 24 110 h 16 l 4 4 h 16 a 2 2 0 0 1 2 2 v 18 a 2 2 0 0 1 -2 2 h -36 a 2 2 0 0 1 -2 -2 v -22 a 2 2 0 0 1 2 -2 z" fill="none" stroke="#90A4AD" stroke-width="2"/>
+    <!-- code-slash glyph -->
+    <text x="32" y="184" font-size="22" text-anchor="middle">&lt;/&gt;</text>
+    <!-- contact glyph (circle) -->
+    <circle cx="32" cy="240" r="11" fill="none" stroke="#90A4AD" stroke-width="2"/>
+    <circle cx="32" cy="236" r="4" fill="none" stroke="#90A4AD" stroke-width="2"/>
+    <path d="M 22 250 q 10 -8 20 0" fill="none" stroke="#90A4AD" stroke-width="2"/>
+  </g>
+  <!-- active border on top item -->
+  <rect x="0" y="86" width="2" height="48" fill="#369FD5"/>
+
+  <!-- explorer-like file tab visible -->
+  <rect x="64" y="56" width="170" height="40" fill="#020E1B"/>
+  <line x1="64" y1="96" x2="234" y2="96" stroke="#625c5c" stroke-width="1"/>
+  <rect x="64" y="56" width="170" height="2" fill="#369FD5"/>
+  <text x="86" y="82" fill="#5ED4F4" font-size="14">⚛</text>
+  <text x="108" y="82" fill="#FFFFFF" font-size="14">accueil.jsx</text>
+
+  <!-- main content area -->
+  <!-- "<" decorative bracket (La Belle Aurore-like) -->
+  <text x="120" y="230" font-family="'La Belle Aurore', cursive, serif" font-size="46" fill="#768390" font-style="italic">&lt;</text>
+
+  <!-- greeting line: cyan -->
+  <text x="160" y="222" fill="#369FD5" font-size="34" font-weight="500">Hello 👋 mon nom est</text>
+
+  <!-- name (huge) -->
+  <text x="120" y="320" fill="#FFFFFF" font-size="84" font-weight="800" letter-spacing="-1">Abdoul Aziz</text>
+  <text x="120" y="410" fill="#FFFFFF" font-size="84" font-weight="800" letter-spacing="-1">BANDE</text>
+  <text x="540" y="410" fill="#369FD5" font-size="84" font-weight="800">/&gt;</text>
+
+  <!-- subtitle -->
+  <text x="120" y="470" fill="#c4dbf2" font-size="32" font-weight="300">Full-Stack Developer · TypeScript · React · Flutter</text>
+
+  <!-- 5 years badge -->
+  <rect x="120" y="500" width="170" height="44" rx="22" fill="#1e648a"/>
+  <text x="205" y="530" fill="#FFFFFF" font-size="18" font-weight="600" text-anchor="middle">5+ years exp.</text>
+
+  <!-- location -->
+  <text x="320" y="528" fill="#c4dbf2" font-size="18" font-weight="300">Ouagadougou, BF</text>
+
+  <!-- right-side decorative code block -->
+  <g opacity="0.55">
+    <text x="780" y="180" fill="#768390" font-family="'La Belle Aurore', cursive, serif" font-size="24" font-style="italic">&lt;html&gt;</text>
+    <text x="800" y="218" fill="#768390" font-family="'La Belle Aurore', cursive, serif" font-size="24" font-style="italic">&lt;body&gt;</text>
+    <text x="820" y="256" fill="#768390" font-family="'La Belle Aurore', cursive, serif" font-size="24" font-style="italic">&lt;h1&gt;</text>
+    <text x="840" y="298" fill="#369FD5" font-size="32" font-weight="700">Hello,</text>
+    <text x="820" y="338" fill="#768390" font-family="'La Belle Aurore', cursive, serif" font-size="24" font-style="italic">&lt;/h1&gt;</text>
+    <text x="820" y="376" fill="#768390" font-family="'La Belle Aurore', cursive, serif" font-size="24" font-style="italic">&lt;p&gt;</text>
+    <text x="840" y="414" fill="#c4dbf2" font-size="20">je crée des produits</text>
+    <text x="840" y="442" fill="#c4dbf2" font-size="20">qui ont du <tspan fill="#369FD5">sens</tspan>.</text>
+    <text x="820" y="476" fill="#768390" font-family="'La Belle Aurore', cursive, serif" font-size="24" font-style="italic">&lt;/p&gt;</text>
+    <text x="800" y="514" fill="#768390" font-family="'La Belle Aurore', cursive, serif" font-size="24" font-style="italic">&lt;/body&gt;</text>
+    <text x="780" y="552" fill="#768390" font-family="'La Belle Aurore', cursive, serif" font-size="24" font-style="italic">&lt;/html&gt;</text>
+  </g>
+
+  <!-- status bar -->
+  <rect x="0" y="606" width="1200" height="24" fill="#369FD5"/>
+  <text x="16" y="622" fill="#0C2235" font-size="12" font-weight="700">⌥ main</text>
+  <text x="84" y="622" fill="#0C2235" font-size="12" font-weight="700">0  ⊘ 0</text>
+  <text x="1090" y="622" fill="#0C2235" font-size="12" font-weight="700">⏾ blue</text>
+</svg>

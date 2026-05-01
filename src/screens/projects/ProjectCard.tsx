@@ -1,12 +1,10 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FaGithub } from "react-icons/fa";
 import { MdClose, MdOutlineOpenInNew } from "react-icons/md";
 import { useMediaQuery } from "react-responsive";
 import { Project } from "./utils";
 import { mediaBreakpoints } from "../../common";
-import ImgSlider from "../../components/Slider";
-import { VscPreview } from "react-icons/vsc";
-import { AnimatePresence, motion } from "motion/react";
 
 interface ProjectCardProps {
   project: Project;
@@ -21,10 +19,11 @@ const ProjectCard = ({
   isOpenDialog,
   toggleShowMore,
 }: ProjectCardProps) => {
+  const { t } = useTranslation();
+  const description = t(`projects.descriptions.${project.descriptionKey}`);
   const displayedText = isOpenDialog
-    ? project.description
-    : `${project.description.slice(0, 180)}...`;
-  const [showPreview, setShowPreview] = useState(false);
+    ? description
+    : `${description.slice(0, 180)}...`;
 
   return (
     <div className="relative flex flex-col items-center justify-center w-full px-4 py-4 rounded-lg sm:p-8 sm:py-6">
@@ -40,7 +39,7 @@ const ProjectCard = ({
             {project.name}
           </span>
           <div className="pt-1 text-sm font-light sm:pt-2 xl:text-base">
-            <span>Stacks principales:</span>
+            <span>{t("common.stacksMain")}</span>
             <div className="flex flex-row">
               {project.stack.map((item, key) => (
                 <div
@@ -62,13 +61,13 @@ const ProjectCard = ({
           <div className="flex items-center w-full pt-4">
             <FaGithub className="mr-2 text-[30px]" />
             <a
-              title="View on git hub"
+              title={t("common.viewProject")}
               className="px-4 py-1 bg-black rounded-md text-primaryColor hover:cursor-pointer"
               href={project.git}
               target="_blank"
               rel="noreferrer"
             >
-              Voir le project
+              {t("common.viewProject")}
             </a>
           </div>
         )}
@@ -82,54 +81,26 @@ const ProjectCard = ({
                 target="_blank"
                 rel="noreferrer"
               >
-                View Demo
+                {t("common.viewDemo")}
               </a>
             </div>
           )}
-
-          {/* {project?.previewBtn && isDialog && (
-            <motion.div
-              initial={false}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center w-full pt-2"
-            >
-              <VscPreview className="mr-2 text-[30px] text-themePrimaryColor" />
-              <div
-                className="px-1 text-base cursor-pointer text-themePrimaryColor hover:underline"
-                onClick={() => setShowPreview(!showPreview)}
-              >
-                {showPreview ? "Hide preview images" : "Show preview images"}
-              </div>
-            </motion.div>
-          )} */}
         </div>
 
         <p className="w-full pb-2 mt-4 text-base break-words text-primaryColor">
-          {isDialog ? project.description : displayedText}
+          {isDialog ? description : displayedText}
         </p>
 
-        {project.description.length > 3 && !isDialog && (
+        {description.length > 3 && !isDialog && (
           <button
-            title={isOpenDialog ? "Read less" : "Read more"}
+            title={
+              isOpenDialog ? t("common.readLess") : t("common.readMore")
+            }
             className="absolute font-semibold text-themePrimaryColor hover:cursor-pointer"
             onClick={toggleShowMore}
           >
-            {isOpenDialog ? "Read less" : "Read more"}
+            {isOpenDialog ? t("common.readLess") : t("common.readMore")}
           </button>
-        )}
-        {isDialog && showPreview && (
-          <AnimatePresence mode="wait">
-            <motion.div
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -10, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="w-full"
-            >
-              <ImgSlider />
-            </motion.div>
-          </AnimatePresence>
         )}
       </div>
     </div>
@@ -171,7 +142,7 @@ const ProjectCardWrapper = ({ project }: { project: Project }) => {
                         toggleShowMore={toggleShowMore}
                       />
                       <button
-                        title="See more"
+                        title="Close"
                         className="absolute text-white right-2 top-2"
                         onClick={() => setShowMore(false)}
                       >

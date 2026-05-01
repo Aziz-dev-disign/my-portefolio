@@ -49,18 +49,19 @@ const sidebarBottomItems = [
     activeIconColrs: "#e4eaed",
     path: "/about",
   },
-  {
-    Icon: CiSettings,
-    iconColors: "#e4eaed",
-    activeIconColrs: "#e4eaed",
-    path: "/settings",
-  },
 ];
 
 const Sidebar = () => {
-  const { pathname, state } = useLocation();
+  const { pathname } = useLocation();
 
-  const { setAboutOpen,  setProjectsOpen} = useContext(AppContext) as AppContextInterface;
+  const {
+    setAboutOpen,
+    setProjectsOpen,
+    setContactOpen,
+    setTechnologiesOpen,
+    themeDialogOpen,
+    setThemeDialogOpen,
+  } = useContext(AppContext) as AppContextInterface;
 
   const displayPathPage = (path: string) => {
     switch (path) {
@@ -69,6 +70,12 @@ const Sidebar = () => {
         break;
       case "/projects":
         setProjectsOpen(true);
+        break;
+      case "/contact":
+        setContactOpen(true);
+        break;
+      case "/technologies":
+        setTechnologiesOpen(true);
         break;
 
       default:
@@ -86,9 +93,13 @@ const Sidebar = () => {
       <div className="flex flex-col">
         {sidebarTopItems.map(
           ({ Icon, path, iconColors, activeIconColrs }, indx: number) => (
-            <Link key={indx} to={path || "/"}>
+            <Link
+              key={indx}
+              to={path || "/"}
+              onClick={() => displayPathPage(path)}
+            >
               <div
-                className={`w-full cursor-pointer hover:bg-sidebar-hover-bg ${pathname === path ? "border-l-2 border-accent-color" : ""}`}
+                className={`w-full cursor-pointer hover:bg-sidebar-hover-bg ${pathname === path ? "border-l-2 border-themePrimaryColor" : ""}`}
               >
                 <Icon
                   fill={pathname === path ? activeIconColrs : iconColors}
@@ -105,11 +116,7 @@ const Sidebar = () => {
             <Link
               key={indx}
               to={path || "/"}
-              onClick={() =>
-                pathname === path || state?.historyPath === path
-                  ? displayPathPage(path)
-                  : null
-              }
+              onClick={() => displayPathPage(path)}
             >
               <div className="w-full cursor-pointer hover:bg-sidebar-hover-bg">
                 <Icon
@@ -120,6 +127,18 @@ const Sidebar = () => {
             </Link>
           )
         )}
+        <button
+          type="button"
+          title="Choisir le thème"
+          aria-label="Choisir le thème"
+          onClick={() => setThemeDialogOpen(!themeDialogOpen)}
+          className="w-full cursor-pointer hover:bg-sidebar-hover-bg"
+        >
+          <CiSettings
+            fill="#90a4ad"
+            className="h-[48px] w-[48px] py-2.5 mx-auto"
+          />
+        </button>
       </div>
     </aside>
   );

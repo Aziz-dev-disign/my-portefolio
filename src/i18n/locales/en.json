@@ -1,0 +1,124 @@
+{
+  "common": {
+    "readMore": "Read more",
+    "readLess": "Read less",
+    "viewProject": "View project",
+    "viewDemo": "View Demo",
+    "downloadCV": "Download my resume",
+    "moreInfo": "More information",
+    "stacksMain": "Main stack:"
+  },
+  "leftBar": {
+    "explorer": "EXPLORER",
+    "portfolio": "Portfolio",
+    "openFolder": "open-folder-structure"
+  },
+  "files": {
+    "home": "home.jsx",
+    "about": "about.html",
+    "stack": "stack.ts",
+    "projects": "projects.json",
+    "contact": "contact.js",
+    "cv": "cv.pdf"
+  },
+  "header": {
+    "search": "portfolio"
+  },
+  "footer": {
+    "branch": "main",
+    "terminalToggle": "Toggle terminal",
+    "themeSwitch": "Choose theme"
+  },
+  "home": {
+    "greeting": "Hello 👋 my name is",
+    "roles": [
+      "Full-Stack Developer",
+      "Typescript Developer",
+      "Flutter Developer",
+      "React Developer",
+      "NodeJS Developer"
+    ]
+  },
+  "about": {
+    "hello": "Hello,",
+    "intro": "my name is",
+    "introTail": "and I'm a",
+    "roleAccent": "Full-stack mobile & web developer",
+    "experience": "with 5+ years of experience building applications on top of",
+    "stackAccent": "TypeScript, React, Node.js and Flutter",
+    "praiseLead": "What people appreciate the most about me is",
+    "praiseAccent": "my keen attention to detail, my ability to solve complex problems, and my commitment to consistently delivering high-quality work.",
+    "praiseTail": "I'm passionate about leveraging technology to tackle hard challenges and a strong advocate of Agile methodologies and modern development best practices."
+  },
+  "technologies": {
+    "title": "Professional",
+    "titleAccent": "Skills",
+    "experience": "Experience:",
+    "years": "years",
+    "groups": {
+      "core": "",
+      "frontEnd": "Front-End",
+      "backEnd": "Back-End",
+      "ciCd": "CI/CD"
+    }
+  },
+  "projects": {
+    "title": "My",
+    "titleAccent": "Projects",
+    "tabPro": "Commercial",
+    "tabPerso": "Personal",
+    "descriptions": {
+      "sankMoney": "Sank Money is a mobile-money app that streamlines financial transactions over the phone. Users can transfer funds to friends, family or business partners, pay for online or in-store purchases, top up their phone credit, buy data plans, and pay bills — a one-stop tool to handle daily finances.",
+      "yenga": "Yenga is a mobile app that simplifies daily personal finance, especially the purchase of phone credit and data plans without having to step out.",
+      "ikoddi": "Ikoddi lets you send messages (promotional messages, awareness campaigns, notifications…), phone credit and data plans to large groups of people at once.",
+      "yalendar": "Yalendar is a SaaS for managing appointments, events, tasks and notes. Built for professionals and individuals who want to organize their schedule efficiently with an intuitive interface.",
+      "gendarmerie": "Ma Gendarmerie BF is the official mobile app of the National Gendarmerie of Burkina Faso. It lets citizens report incidents, file tips, and find useful information such as gendarmerie service contacts.",
+      "jdws": "Justice and Dignity for Sahel Women (JDWS) is an international non-governmental organization. Its main mission is to fight gender-based violence and promote women's rights. JDWS helps break the silence and lift taboos to better inform on gender-based violence, support women and girls of the Sahel, and call out inequality and social injustice.",
+      "ein": "The International School of Digital Education is a pioneering institution committed to excellence in digital education. As digital technology plays an ever-growing role in economic and social development, the school positions itself as a hub of learning, innovation and opportunity for the Burkinabe people."
+    }
+  },
+  "contact": {
+    "titleAccent": "- Get in touch",
+    "findMe": "FIND ME ON",
+    "intro": "Feel free to reach out",
+    "introAccent": "and let's connect.",
+    "fields": {
+      "email": "email",
+      "subject": "subject",
+      "message": "message"
+    },
+    "submit": "Send",
+    "submitting": "Sending…",
+    "success": "Message sent. Thanks!",
+    "errorGeneric": "Sending failed. Please try again later.",
+    "errorNotConfigured": "EmailJS is not configured. Set VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID and VITE_EMAILJS_PUBLIC_KEY in .env."
+  },
+  "themeDialog": {
+    "title": "Choose theme:"
+  },
+  "terminal": {
+    "title": "Terminal",
+    "close": "Close terminal",
+    "resize": "Resize terminal",
+    "toggle": "Toggle terminal (Ctrl+`)",
+    "welcome": "Welcome to the portfolio terminal.",
+    "welcomeHint": "Type a command, click a suggestion, or {{cmd}} for the list.",
+    "suggestions": "suggestions:",
+    "notFound": "{{name}}: command not found. Type {{cmd}}."
+  },
+  "errorBoundary": {
+    "tag": "<error>",
+    "tagClose": "</error>",
+    "titleLead": "Oops,",
+    "titleAccent": "an unexpected",
+    "titleTail": "error.",
+    "message": "Something went wrong on the application side. Nothing serious — you can reload the page or go back home.",
+    "home": "Back home",
+    "reload": "Reload"
+  },
+  "language": {
+    "label": "Language",
+    "fr": "FR",
+    "en": "EN"
+  }
+}

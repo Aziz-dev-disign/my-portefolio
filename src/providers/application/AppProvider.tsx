@@ -9,6 +9,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [projectsOpen, setProjectsOpen] = useState<boolean>(false);
   const [technologiesOpen, setTechnologiesOpen] = useState<boolean>(false);
   const [gitlabOpen, setGitlabOpen] = useState<boolean>(false);
+  const [themeDialogOpen, setThemeDialogOpen] = useState<boolean>(false);
+  const [terminalOpen, setTerminalOpen] = useState<boolean>(false);
 
   const state = {
     isResponsiveTabBar,
@@ -25,6 +27,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     setTechnologiesOpen,
     gitlabOpen,
     setGitlabOpen,
+    themeDialogOpen,
+    setThemeDialogOpen,
+    terminalOpen,
+    setTerminalOpen,
   };
 
   return <AppContext.Provider value={state}>{children}</AppContext.Provider>;

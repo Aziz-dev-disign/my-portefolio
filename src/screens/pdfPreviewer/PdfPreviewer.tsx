@@ -15,10 +15,23 @@ import { LuZoomIn, LuZoomOut } from "react-icons/lu";
 
 import { IoMdDownload } from "react-icons/io";
 import { useMediaQuery } from "react-responsive";
+import { useTranslation } from "react-i18next";
 import { useDownloadPdf } from "../../hooks/useDownloadPdf";
 import { mediaBreakpoints } from "../../common";
 
+const CV_FR = import.meta.env.VITE_CV_PATH_FR || "/cv.pdf";
+const CV_EN = import.meta.env.VITE_CV_PATH_EN || "/cv-en.pdf";
+
+const cvUrlFor = (lang: string) =>
+  lang.split("-")[0] === "en" ? CV_EN : CV_FR;
+
+const cvFileNameFor = (lang: string) =>
+  lang.split("-")[0] === "en"
+    ? "AbdoulAzizBANDE-EN.pdf"
+    : "AbdoulAzizBANDE-FR.pdf";
+
 export const PdfPriever = () => {
+  const { i18n } = useTranslation();
   const fullScreenPluginInstance = fullScreenPlugin();
 
   const { EnterFullScreen } = fullScreenPluginInstance;
@@ -30,12 +43,14 @@ export const PdfPriever = () => {
     query: `(max-width: ${mediaBreakpoints.sm}px)`,
   });
 
-  const [, handleDownload] = useDownloadPdf(
-    import.meta.env.CV_PATH,
-    "AbdoulAzizBANDE.pdf"
-  );
+  const lang = i18n.resolvedLanguage || i18n.language || "fr";
+  const cvUrl = cvUrlFor(lang);
+  const [, handleDownload] = useDownloadPdf(cvUrl, cvFileNameFor(lang));
   return (
-    <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
+    <Worker
+      key={lang}
+      workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js"
+    >
       <div className="h-full p-2 overflow-hidden">
         <div className="flex flex-row items-start justify-center">
           <EnterFullScreen>
@@ -96,7 +111,7 @@ export const PdfPriever = () => {
           </div>
         </div>
         <Viewer
-          fileUrl={import.meta.env.CV_PATH}
+          fileUrl={cvUrl}
           plugins={[zoomPluginInstance, fullScreenPluginInstance]}
         />
       </div>

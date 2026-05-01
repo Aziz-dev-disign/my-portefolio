@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { FaFolder, FaFolderOpen } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
@@ -10,6 +11,7 @@ import { AppContext, AppContextInterface } from "../../providers/application";
 import { routesLinkItems } from "../../providers/routes";
 
 export const LeftBar = () => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const [open, setOpen] = useState<boolean>(true);
 
@@ -64,11 +66,11 @@ export const LeftBar = () => {
     >
       <div className="w-full px-4 py-2">
         <div className="block font-light font-code text-textEditorColor">
-          EXPLORER
+          {t("leftBar.explorer")}
         </div>
       </div>
       <button
-        title="open-folder-structure"
+        title={t("leftBar.openFolder")}
         type="button"
         className="flex items-center w-full gap-2 px-5 py-1 text-base text-textEditorColor hover:bg-textEditorHoverBg hover:text-textEditorHoverColor"
         onClick={() => setOpen(!open)}
@@ -76,7 +78,7 @@ export const LeftBar = () => {
         {open ? <IoIosArrowDown /> : <IoIosArrowForward />}
         {open ? <FaFolderOpen color="#90a4ad" /> : <FaFolder color="#90a4ad" />}
 
-        <p>Portfolio</p>
+        <p>{t("leftBar.portfolio")}</p>
         {/* <VscCloseAll color="#90a4ad" className="items-end"/> */}
       </button>
       {open && (
@@ -86,7 +88,8 @@ export const LeftBar = () => {
             aboutOpen,
             contactOpen,
             projectsOpen,
-            technologiesOpen
+            technologiesOpen,
+            t
           ).map((item, key) => (
             <Link
               key={key}

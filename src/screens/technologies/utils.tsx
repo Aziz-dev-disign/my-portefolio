@@ -17,7 +17,7 @@ import {
 
 export const skillset = [
   {
-    name: '',
+    nameKey: 'core',
     items: [
       {
         label: 'TypeScript',
@@ -37,7 +37,7 @@ export const skillset = [
     ],
   },
   {
-    name: 'Front-End',
+    nameKey: 'frontEnd',
     items: [
       {
         label: 'Flutter',
@@ -67,7 +67,7 @@ export const skillset = [
     ],
   },
   {
-    name: 'Back-End',
+    nameKey: 'backEnd',
     items: [
       {
         label: 'Node.js',
@@ -98,7 +98,7 @@ export const skillset = [
     ],
   },
   {
-    name: 'CI/CD',
+    nameKey: 'ciCd',
     items: [
       {
         label: 'Docker',

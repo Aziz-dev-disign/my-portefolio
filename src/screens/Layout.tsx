@@ -10,6 +10,7 @@ import { mediaBreakpoints } from "../common";
 const LeftBar = lazy(() => import("../components/LeftBar/LeftBar"));
 // const SocialNetworks = lazy(() => import("./SocialNetworks"));
 const Sidebar = lazy(() => import("../components/Sidebar/Sidebar"));
+const Terminal = lazy(() => import("../components/Terminal/Terminal"));
 
 export const Layout = () => {
   const mobileAndTablet = useMediaQuery({
@@ -25,7 +26,7 @@ export const Layout = () => {
         <Sidebar />
           {/* {!mobileAndTablet && <SocialNetworks />} */}
           <LeftBar />
-          <section className="w-full h-full pb-2 overflow-hidden main-window bg-bgColor">
+          <section className="relative w-full h-full pb-2 overflow-hidden main-window bg-bgColor">
             <TabBar mobileAndTablet={mobileAndTablet} />
 
             <main className="px-4 pt-4 page-wrapper sm:px-8">
@@ -33,6 +34,10 @@ export const Layout = () => {
                 <Outlet />
               </Suspense>
             </main>
+
+            <Suspense fallback={null}>
+              <Terminal />
+            </Suspense>
           </section>
         </section>
 
