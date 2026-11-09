@@ -104,19 +104,6 @@ export const professionnalProjects: Project[] = [
     ],
   },
   {
-    name: "Visionary Entreprises IT",
-    descriptionKey: "visionary",
-    img: visionaryLogo,
-    url: "https://visionaryentreprises.com/services/",
-    stack: [
-      <SiPhp key="php" color="#777BB4" className="text-[28px]" />,
-      <SiWordpress key="wordpress" color="#5ED4F4" className="text-[28px]" />,
-    ],
-  },
-];
-
-export const customProjects: Project[] = [
-  {
     name: "JDWS",
     descriptionKey: "jdws",
     img: jdwsLogo,
@@ -126,6 +113,9 @@ export const customProjects: Project[] = [
     ],
     url: "https://jdws.org/",
   },
+];
+
+export const customProjects: Project[] = [
   {
     name: "EIN",
     descriptionKey: "ein",
@@ -144,6 +134,16 @@ export const customProjects: Project[] = [
     stack: [
       <FaReact key="react" color="#5ED4F4" className="text-[28px]" />,
       <SiFirebase key="firebase" color="#FFA500" className="text-[28px]" />,
+    ],
+  },
+  {
+    name: "Visionary Entreprises IT",
+    descriptionKey: "visionary",
+    img: visionaryLogo,
+    url: "https://visionaryentreprises.com/services/",
+    stack: [
+      <SiPhp key="php" color="#777BB4" className="text-[28px]" />,
+      <SiWordpress key="wordpress" color="#5ED4F4" className="text-[28px]" />,
     ],
   },
 ];
