@@ -35,7 +35,7 @@ const ProjectCard = ({
       )}
       <div className="relative flex flex-row items-center w-full">
         <div className="flex h-24 w-24 min-w-[96px] items-center rounded-sm">
-          <img src={project.img} alt={project.name} className="w-full h-full" />
+          <img src={project.img} alt={project.name} className="object-contain w-full h-full" />
         </div>
         <div className="pl-4 text-primaryColor">
           <span className="text-base font-semibold h-7 xl:text-2xl xl:font-bold">

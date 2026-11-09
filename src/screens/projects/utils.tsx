@@ -16,6 +16,8 @@ import yalendarLogo from "../../assets/images/yalendar.png";
 import gendarmerieLogo from "../../assets/images/gendarmerie.jpg";
 import jdwsLogo from "../../assets/images/jdws.jpeg";
 import einLogo from "../../assets/images/ein.jpg";
+import visionaryLogo from "../../assets/images/visionary.png";
+import cashflowLogo from "../../assets/images/cashflow.png";
 
 
 export interface Project {
@@ -101,6 +103,16 @@ export const professionnalProjects: Project[] = [
       />,
     ],
   },
+  {
+    name: "Visionary Entreprises IT",
+    descriptionKey: "visionary",
+    img: visionaryLogo,
+    url: "https://visionaryentreprises.com/services/",
+    stack: [
+      <SiPhp key="php" color="#777BB4" className="text-[28px]" />,
+      <SiWordpress key="wordpress" color="#5ED4F4" className="text-[28px]" />,
+    ],
+  },
 ];
 
 export const customProjects: Project[] = [
@@ -123,5 +135,15 @@ export const customProjects: Project[] = [
       <SiWordpress key="wordpress" color="#5ED4F4" className="text-[28px]" />,
     ],
     url: "https://ein-bf.com/",
+  },
+  {
+    name: "Cash Flow",
+    descriptionKey: "cashflow",
+    img: cashflowLogo,
+    url: "https://cashflow.yookalis.com/",
+    stack: [
+      <FaReact key="react" color="#5ED4F4" className="text-[28px]" />,
+      <SiFirebase key="firebase" color="#FFA500" className="text-[28px]" />,
+    ],
   },
 ];
