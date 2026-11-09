@@ -2,13 +2,19 @@ import {BiLogoPostgresql} from 'react-icons/bi';
 import {FaCss3, FaHtml5, FaNodeJs, FaReact} from 'react-icons/fa';
 import {
   SiDart,
+  SiCouchbase,
   SiDocker,
   SiFirebase,
   SiFlutter,
   SiGithub,
   SiGitlab,
   SiGooglecloud,
+  SiGithubactions,
   SiJavascript,
+  SiMysql,
+  SiNextdotjs,
+  SiOpenjdk,
+  SiSpring,
   SiNestjs,
   SiPrisma,
   SiTailwindcss,
@@ -30,6 +36,10 @@ export const skillset = [
         expirience: 4,
       },
       {
+        label: 'Java',
+        icon: <SiOpenjdk color="#ED8B00" className="text-[48px] sm:text-[64px]" />,
+      },
+      {
         label: 'Dart',
         icon: <SiDart color="#02569B" className="text-[48px] sm:text-[64px]" />,
         expirience: 3,
@@ -48,6 +58,10 @@ export const skillset = [
         label: 'React',
         icon: <FaReact color="#5ED4F4" className="text-[48px] sm:text-[64px]" />,
         expirience: 4,
+      },
+      {
+        label: 'Next.js',
+        icon: <SiNextdotjs color="#888888" className="text-[48px] sm:text-[64px]" />,
       },
       {
         label: 'HTML5',
@@ -91,6 +105,18 @@ export const skillset = [
         expirience: 4,
       },
       {
+        label: 'Spring Batch',
+        icon: <SiSpring color="#6DB33F" className="text-[48px] sm:text-[64px]" />,
+      },
+      {
+        label: 'MySQL',
+        icon: <SiMysql color="#4479A1" className="text-[48px] sm:text-[64px]" />,
+      },
+      {
+        label: 'Couchbase',
+        icon: <SiCouchbase color="#EA2328" className="text-[48px] sm:text-[64px]" />,
+      },
+      {
         label: 'Prisma',
         icon: <SiPrisma color="#5ED4F4" className="text-[48px] sm:text-[64px]" />,
         expirience: 4,
@@ -114,6 +140,10 @@ export const skillset = [
         label: 'Github',
         icon: <SiGithub color="#181717" className="text-[48px] sm:text-[64px]" />,
         expirience: 5,
+      },
+      {
+        label: 'CI/CD',
+        icon: <SiGithubactions color="#2088FF" className="text-[48px] sm:text-[64px]" />,
       },
       {
         label: 'GCP',

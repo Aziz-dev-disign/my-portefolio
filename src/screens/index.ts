@@ -1,10 +1,5 @@
-export * from "./home";
-export * from "./contact";
-export * from "./projects";
-export * from "./technologies";
-export * from "./pdfPreviewer";
-export * from "./about";
-export * from "./gitlab";
-
+// Screens are lazy-loaded from providers/routes/utils.tsx; only the layout
+// pieces needed by the shell are re-exported here so heavy screens (PDF viewer,
+// calendar, ...) never end up in the main bundle.
 export * from "./Layout";
 export * from "./SocialNetworks";

@@ -1,50 +1,47 @@
-# React + TypeScript + Vite
+# Portfolio — Abdoul Aziz BANDE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio personnel au style VS Code : onglets, barre latérale, terminal interactif, thèmes et interface bilingue FR/EN.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Vite · React 18 · TypeScript · Tailwind CSS + DaisyUI · Motion · react-router-dom · i18next · EmailJS · PWA
 
-## Expanding the ESLint configuration
+## Démarrage
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install --legacy-peer-deps   # l'ancien plugin ESLint v6 entre en conflit avec les peers récents
+cp .env.example .env             # puis renseigner les clés EmailJS
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+| Script | Rôle |
+| --- | --- |
+| `npm run dev` | serveur de développement |
+| `npm run build` | `tsc -b` puis build de production |
+| `npm run preview` | prévisualise le build |
+| `npm run lint` | ESLint |
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Variables d'environnement
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Voir `.env.example` : `VITE_EMAILJS_*` (formulaire de contact) et `VITE_CV_PATH_FR` / `VITE_CV_PATH_EN` (optionnel, chemins des CV).
+
+## Structure
+
 ```
+src/
+  screens/      pages (home, about, technologies, projects, contact, pdfPreviewer), chargées en lazy
+  components/   Header, Sidebar, TabBar, Footer, Terminal, ThemeDialog, LanguageToggle…
+  providers/    thème, état de l'application, routes
+  i18n/         traductions FR/EN (src/i18n/locales)
+public/         CV (cv.pdf, cv-en.pdf), icônes PWA, og-image
+```
+
+## Ajouter un projet
+
+1. Ajouter le logo dans `src/assets/images/`.
+2. Ajouter une entrée dans `professionnalProjects` ou `customProjects` (`src/screens/projects/utils.tsx`) avec `name`, `descriptionKey`, `img`, `stack` et, si besoin, `url` / `git`.
+3. Ajouter la description sous `projects.descriptions.<descriptionKey>` dans `fr.json` **et** `en.json`.
+
+## Ajouter une compétence
+
+Ajouter un item dans le bon groupe de `src/screens/technologies/utils.tsx` (`expirience` est optionnel).

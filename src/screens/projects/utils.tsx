@@ -100,7 +100,6 @@ export const professionnalProjects: Project[] = [
         className="text-[28px]"
       />,
     ],
-    url: "https://google.com",
   },
 ];
 

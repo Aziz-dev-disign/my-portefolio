@@ -4,7 +4,7 @@ import { FaFilePdf, FaHtml5, FaReact } from "react-icons/fa";
 import { SiJavascript, SiTypescript } from "react-icons/si";
 import { VscJson } from "react-icons/vsc";
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import { Layout } from "../../screens";
+import { Layout } from "../../screens/Layout";
 
 export interface RoutesLinkItems {
   logo: ReactElement;

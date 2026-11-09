@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { FaGithub } from "react-icons/fa";
 import { MdClose, MdOutlineOpenInNew } from "react-icons/md";
 import { useMediaQuery } from "react-responsive";
-import { Project } from "./utils";
+import type { Project } from "./utils";
 import { mediaBreakpoints } from "../../common";
 
 interface ProjectCardProps {
@@ -21,9 +21,12 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
   const { t } = useTranslation();
   const description = t(`projects.descriptions.${project.descriptionKey}`);
-  const displayedText = isOpenDialog
-    ? description
-    : `${description.slice(0, 180)}...`;
+  const MAX_PREVIEW = 180;
+  const isLong = description.length > MAX_PREVIEW;
+  const displayedText =
+    isOpenDialog || !isLong
+      ? description
+      : `${description.slice(0, MAX_PREVIEW).trimEnd()}…`;
 
   return (
     <div className="relative flex flex-col items-center justify-center w-full px-4 py-4 rounded-lg sm:p-8 sm:py-6">
@@ -47,7 +50,7 @@ const ProjectCard = ({
                   className="relative flex items-center justify-center p-0 mx-0 my-2 rounded-sm group h-9 w-9 first:ml-0 hover:cursor-pointer hover:bg-white sm:mx-1 sm:p-1"
                 >
                   {item}
-                  <span className="absolute px-2 m-5 mx-auto mt-10 text-sm font-semibold text-center text-black transition-opacity -translate-x-1/2 translate-y-full bg-white rounded-md opacity-0 py-1/2 left-1/2 group-hover:opacity-100">
+                  <span className="absolute px-2 m-5 mx-auto mt-10 text-sm font-semibold text-center text-black transition-opacity -translate-x-1/2 translate-y-full bg-white rounded-md opacity-0 pointer-events-none py-1/2 left-1/2 group-hover:opacity-100">
                     {item.key}
                   </span>
                 </div>
@@ -91,7 +94,7 @@ const ProjectCard = ({
           {isDialog ? description : displayedText}
         </p>
 
-        {description.length > 3 && !isDialog && (
+        {isLong && !isDialog && (
           <button
             title={
               isOpenDialog ? t("common.readLess") : t("common.readMore")
